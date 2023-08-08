@@ -5,11 +5,15 @@ name = "hello-world"
 trigger = { type = "http", base = "/" }
 version = "0.1.0"
 
+[variables]
+object = { default = "teapot" }
+
 [[component]]
 id = "hello-world"
 source = "target/hello-world.wasm"
+allowed_http_hosts = ["random-data-api.fermyon.app"]
 exclude_files = ["**/node_modules"]
 [component.trigger]
-route = "/..."
+route = "/hello-world"
 [component.build]
 command = "npm run build"
